@@ -1,0 +1,17 @@
+---
+interface Props {
+  degree: string;
+  institution: string;
+  year: string;
+  details?: string;
+}
+
+const { degree, institution, year, details } = Astro.props;
+---
+
+<div class="bg-white p-6 rounded-lg shadow-md">
+  <h3 class="text-xl font-semibold text-secondary">{degree}</h3>
+  <p class="text-gray-600">{institution}</p>
+  <p class="text-gray-500">{year}</p>
+  {details && <p class="text-gray-700 mt-2 italic">{details}</p>}
+</div>

@@ -1,0 +1,116 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ExpertiseCard from '../components/ExpertiseCard.astro';
+import ExperienceCard from '../components/ExperienceCard.astro';
+import Section from '../components/Section.astro';
+import EducationCard from '../components/EducationCard.astro';
+import SkillsSection from '../components/SkillsSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+
+const experiences = [
+  {
+    title: "Computational Scientist - Geospatial Science and HPC",
+    company: "Research Computing Center, University of Chicago",
+    period: "December 2018 – Present",
+    responsibilities: [
+      "Spatial Data Science Instructor for the CAN Summer Experience program",
+      "Employed VGG16-based classification and VertexAI-based object detection models",
+      "Developed and expanded dispatch server for geospatial deep learning workflows",
+      "Created and maintained CI/CD pipelines for Singularity container images"
+    ]
+  },
+  {
+    title: "Post-Doctoral Scholar and Lecturer",
+    company: "WorldPop and Flowminder Project",
+    period: "November 2016 – November 2018",
+    responsibilities: [
+      "Applied spatial statistics and machine learning methods for global population distributions",
+      "Developed strategies for gridded population mapping",
+      "Modeled migration using spatial Poisson and negative binomial models"
+    ]
+  }
+];
+
+const education = [
+  {
+    degree: "Ph.D. in Geospatial Information Sciences",
+    institution: "The University of Texas at Dallas",
+    year: "2015",
+    details: "Dissertation: Predicting Land Use Change Using an Eigenvector Spatial Filtering Specification and Sprawl Measures"
+  },
+  {
+    degree: "M.S. in Geospatial Information Sciences",
+    institution: "The University of Texas at Dallas",
+    year: "2012"
+  },
+  {
+    degree: "Bachelor of Architecture",
+    institution: "Indian Institute of Technology (IIT) Roorkee",
+    year: "2005"
+  }
+];
+
+const skills = {
+  programming: ["Python", "R", "C++", "Java"],
+  geospatial: ["QGIS", "ArcGIS", "GRASS GIS", "GDAL/OGR"],
+  ml: ["TensorFlow", "Keras", "PyTorch"],
+  cloud: ["AWS", "Google Cloud Platform"],
+  other: ["Docker", "Git", "CI/CD", "Linux"]
+};
+
+const contact = {
+  email: "psinha@uchicago.edu",
+  linkedin: "linkedin.com/in/pnsinha",
+  github: "github.com/pnsinha",
+  scholar: "scholar.google.com/citations?user=FRpz-2cAAAAJ"
+};
+---
+
+<Layout title="Parm Sinha - CyberGIS and High-Performance Computing Specialist">
+  <main class="container mx-auto px-4 py-8 max-w-4xl">
+    <Hero 
+      name="Parm Sinha"
+      title="CyberGIS and High-Performance Computing Specialist"
+      image="/images/profile-placeholder.svg"
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      <ExpertiseCard
+        icon="/images/icons/cybergis.svg"
+        title="CyberGIS"
+        description="Advanced Geospatial Analysis"
+      />
+      <ExpertiseCard
+        icon="/images/icons/hpc.svg"
+        title="High-Performance Computing"
+        description="Scalable Solutions"
+      />
+      <ExpertiseCard
+        icon="/images/icons/ml.svg"
+        title="Machine Learning"
+        description="Deep Learning & AI"
+      />
+    </div>
+
+    <Section title="Professional Experience">
+      <div class="space-y-6">
+        {experiences.map(exp => (
+          <ExperienceCard {...exp} />
+        ))}
+      </div>
+    </Section>
+
+    <Section title="Education">
+      <div class="space-y-6">
+        {education.map(edu => (
+          <EducationCard {...edu} />
+        ))}
+      </div>
+    </Section>
+
+    <SkillsSection skills={skills} />
+    
+    <ContactSection {...contact} />
+  </main>
+</Layout>
